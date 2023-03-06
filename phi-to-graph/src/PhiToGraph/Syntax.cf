@@ -1,0 +1,16 @@
+
+TermAttr. Term ::= Ident ;
+TermMap.  Term ::= Ident "->" Term ;
+TermObj.  Term ::= "[" [Term] "]";
+separator Term "," ;
+
+Commands. Commands ::= [Command] ;
+
+CommandAdd.  Command ::= "ADD" "(" Integer ")" ;
+CommandBind. Command ::= "BIND" "(" Integer "," Integer "," Ident ")" ;
+separator Command "," ;
+
+Rules. Rules ::= [Rule] ;
+
+Rule. Rule ::= Term "--" Ident "->" Commands ;
+separator Rule ";" ;

@@ -1,0 +1,78 @@
+name:                phi-to-graph
+version:             0.1.0.0
+github:              "fizruk/phi-to-graph"
+license:             BSD3
+author:              "Nikolai Kudasov"
+maintainer:          "nickolay.kudasov@gmail.com"
+copyright:           "2022 Nikolai Kudasov"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/fizruk/phi-to-graph#readme>
+
+custom-setup:
+  dependencies:
+    - base
+    - Cabal
+    - cabal-doctest >=1.0.2 && <1.1
+
+dependencies:
+- array
+- base >= 4.7 && < 5
+- containers
+- logict
+- mtl
+
+ghc-options:
+- -Wall -fno-warn-type-defaults
+
+library:
+  source-dirs: src
+  when:
+  - condition: false
+    other-modules:
+    - PhiToGraph.Syntax.Test
+    - PhiToGraph.Syntax.ErrM
+    - PhiToGraph.Syntax.Skel
+
+executables:
+  phi-to-graph-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - phi-to-graph
+
+tests:
+  spec:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - phi-to-graph
+
+  doctests:
+    source-dirs: test
+    main: doctests.hs
+    other-modules: []
+    dependencies:
+    - base
+    - doctest
+    - Glob
+    - QuickCheck
+    - template-haskell

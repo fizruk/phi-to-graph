@@ -21,3 +21,9 @@ cabal.project.local
 cabal.project.local~
 .HTF/
 .ghc.environment.*
+stella/src/Language/Stella/Syntax/Test
+stella/src/Language/Stella/Makefile
+*.bak
+*.fdb_latexmk
+*.fls
+*.log
